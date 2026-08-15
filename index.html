@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Modern, prémium szolgáltatói weboldal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Prémium szolgáltatás</title>
+</head>
+<body>
+  <div class="noise"></div>
+  <header class="nav-wrap">
+    <a class="brand" href="#top" aria-label="Kezdőlap"><span class="brand-mark"></span><span id="brand"></span></a>
+    <button class="menu" aria-label="Menü megnyitása" aria-expanded="false"><span></span><span></span></button>
+    <nav><a href="#services">Szolgáltatások</a><a href="#process">Folyamat</a><a href="#work">Munkáink</a><a href="#faq">GYIK</a></nav>
+    <a class="nav-cta" href="#contact" id="navCta"></a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy reveal">
+        <p class="eyebrow" id="eyebrow"></p>
+        <h1 id="headline"></h1>
+        <p class="lede" id="lede"></p>
+        <div class="hero-actions"><a class="button primary" href="#contact" id="heroCta"></a><a class="button ghost" href="#services">Felfedezem</a></div>
+        <div class="trust" id="trust"></div>
+      </div>
+      <div class="hero-visual reveal">
+        <img src="assets/hero.png" alt="" />
+        <div class="floating-stat"><strong id="statValue"></strong><span id="statLabel"></span></div>
+        <div class="image-tag">Precizitás • Minőség • Figyelem</div>
+      </div>
+    </section>
+
+    <section class="marquee" aria-label="Fő értékeink"><div id="marquee"></div></section>
+
+    <section class="intro section reveal">
+      <div><p class="eyebrow">A részletekben hiszünk</p><h2 id="introTitle"></h2></div>
+      <p id="introText"></p>
+    </section>
+
+    <section class="services section" id="services"><div class="section-head reveal"><p class="eyebrow">Szolgáltatásaink</p><h2>Amiért hozzánk fordulnak</h2></div><div class="service-grid" id="serviceGrid"></div></section>
+
+    <section class="feature-band" id="work">
+      <div class="feature-image reveal"><img src="assets/detail.png" alt="" /></div>
+      <div class="feature-copy reveal"><p class="eyebrow">Több mint szolgáltatás</p><h2 id="featureTitle"></h2><p id="featureText"></p><div class="metrics" id="metrics"></div></div>
+    </section>
+
+    <section class="process section" id="process"><div class="section-head reveal"><p class="eyebrow">Egyszerű és átlátható</p><h2>Így dolgozunk együtt</h2></div><div class="steps" id="steps"></div></section>
+
+    <section class="gallery section"><div class="section-head reveal"><p class="eyebrow">Válogatás</p><h2 id="galleryTitle"></h2></div><div class="gallery-grid"><figure class="wide reveal"><img src="assets/gallery-1.png" alt=""/><figcaption id="galleryOne"></figcaption></figure><figure class="reveal"><img src="assets/gallery-2.png" alt=""/><figcaption id="galleryTwo"></figcaption></figure><figure class="reveal quote-card"><blockquote id="quote"></blockquote><cite id="quoteBy"></cite></figure></div></section>
+
+    <section class="faq section" id="faq"><div class="section-head reveal"><p class="eyebrow">Hasznos tudnivalók</p><h2>Gyakori kérdések</h2></div><div id="faqList"></div></section>
+
+    <section class="contact section" id="contact">
+      <div class="contact-copy reveal"><p class="eyebrow">Következő lépés</p><h2 id="contactTitle"></h2><p id="contactText"></p><div class="contact-meta" id="contactMeta"></div></div>
+      <form class="reveal" id="contactForm"><label>Név<input required name="name" placeholder="Az Ön neve" /></label><label>Telefonszám<input required name="phone" type="tel" placeholder="+36 30 123 4567" /></label><label class="full">Miben segíthetünk?<textarea name="message" rows="4" placeholder="Írjon pár mondatot..."></textarea></label><button class="button primary full" type="submit" id="formCta"></button><p class="form-note full">Az elküldéssel elfogadja az adatkezelési tájékoztatót.</p></form>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#top"><span class="brand-mark"></span><span id="footerBrand"></span></a><p id="footerText"></p><div><a href="#services">Szolgáltatások</a><a href="#process">Folyamat</a><a href="#contact">Kapcsolat</a></div><small>© 2026 • Minden jog fenntartva.</small></footer>
+  <div class="toast" role="status">Köszönjük! Hamarosan jelentkezünk.</div>
+  <script src="config.js"></script><script src="app.js"></script>
+</body>
+</html>
