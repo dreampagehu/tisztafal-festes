@@ -2,7 +2,7 @@ const header = document.querySelector('header');
 const menu = document.querySelector('.menu');
 const rollerStyles = document.createElement('link');
 rollerStyles.rel = 'stylesheet';
-rollerStyles.href = 'roller.css?v=3d-roller-2';
+rollerStyles.href = 'roller.css?v=paint-wall-3';
 document.head.append(rollerStyles);
 const paintWash = document.createElement('div');
 paintWash.className = 'paint-wash';
@@ -14,6 +14,7 @@ paintRoller.innerHTML = '<div class="roller-assembly"><img class="roller-ghost" 
 document.body.prepend(paintWash, paintRoller);
 const colorSections = [...document.querySelectorAll('main > section')];
 const paintColors = ['#ff7350', '#7c5cff', '#19b8a8', '#ff9c3d', '#3979ff', '#d94f88', '#87a857', '#9b66ff', '#16a6b6'];
+const paintHues = ['0deg', '238deg', '148deg', '22deg', '205deg', '314deg', '72deg', '250deg', '166deg'];
 
 menu.addEventListener('click', () => header.classList.toggle('open'));
 document.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => header.classList.remove('open')));
@@ -62,6 +63,7 @@ const renderPaint = () => {
   if (nextPaint !== activePaint) {
     const color = paintColors[nextPaint % paintColors.length];
     paintRoller.style.setProperty('--paint', color);
+    paintRoller.style.setProperty('--paint-hue', paintHues[nextPaint % paintHues.length]);
     paintWash.style.setProperty('--paint', color);
     activePaint = nextPaint;
   }
