@@ -1,5 +1,19 @@
 const header = document.querySelector('header');
 const menu = document.querySelector('.menu');
+const rollerStyles = document.createElement('link');
+rollerStyles.rel = 'stylesheet';
+rollerStyles.href = 'roller.css';
+document.head.append(rollerStyles);
+const paintWash = document.createElement('div');
+paintWash.className = 'paint-wash';
+paintWash.setAttribute('aria-hidden', 'true');
+const paintRoller = document.createElement('div');
+paintRoller.className = 'paint-roller';
+paintRoller.setAttribute('aria-hidden', 'true');
+paintRoller.innerHTML = '<div class="roller-head"><i></i></div><div class="roller-arm"></div><div class="roller-handle"></div><small>COLOR IN MOTION</small>';
+document.body.prepend(paintWash, paintRoller);
+const colorSections = [...document.querySelectorAll('main > section')];
+const paintColors = ['#ff7350', '#7c5cff', '#19b8a8', '#ff9c3d', '#3979ff', '#d94f88', '#87a857', '#9b66ff', '#16a6b6'];
 
 menu.addEventListener('click', () => header.classList.toggle('open'));
 document.querySelectorAll('nav a').forEach((link) => link.addEventListener('click', () => header.classList.remove('open')));
@@ -27,3 +41,35 @@ document.querySelectorAll('.service-grid article, .process-grid article, .galler
   card.classList.add('mobile-reveal');
   observer.observe(card);
 });
+
+let paintTicking = false;
+let activePaint = -1;
+const renderPaint = () => {
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - innerHeight);
+  const progress = Math.min(1, Math.max(0, scrollY / maxScroll));
+  const rollerY = innerHeight * (.16 + progress * .62);
+  paintRoller.style.setProperty('--roller-y', `${rollerY}px`);
+  paintRoller.style.setProperty('--roller-shift', `${scrollY * .32}px`);
+  paintWash.style.setProperty('--roller-y', `${rollerY + 18}px`);
+  const focusY = scrollY + innerHeight * .48;
+  let nextPaint = 0;
+  colorSections.forEach((section, index) => {
+    if (section.offsetTop <= focusY) nextPaint = index;
+  });
+  if (nextPaint !== activePaint) {
+    const color = paintColors[nextPaint % paintColors.length];
+    paintRoller.style.setProperty('--paint', color);
+    paintWash.style.setProperty('--paint', color);
+    activePaint = nextPaint;
+  }
+  paintTicking = false;
+};
+const requestPaint = () => {
+  if (!paintTicking) {
+    paintTicking = true;
+    requestAnimationFrame(renderPaint);
+  }
+};
+addEventListener('scroll', requestPaint, { passive: true });
+addEventListener('resize', requestPaint);
+renderPaint();
